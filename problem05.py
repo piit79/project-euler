@@ -62,16 +62,20 @@ def factorize(number):
 divisors = range(2, 21)
 factorized = []
 
+"""Factorize all the divisors"""
 for d in divisors:
     factorized.append(factorize(d))
 
+"""This will hold the factorization of the least common multiple of all the
+divisors"""
 lcm = {}
 
+"""Compute the least common multiple of all divisors"""
 for fd in factorized:
     for p in fd.keys():
-        if p not in lcm:
-            lcm[p] = fd[p]
-        elif lcm[p] < fd[p]:
+        """If the prime is not in the factorization"""
+        if p not in lcm or lcm[p] < fd[p]:
+            """Prime factor is not in the factorization or has a lower power"""
             lcm[p] = fd[p]
 
 result = product(lcm)
