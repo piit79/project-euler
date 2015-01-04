@@ -15,7 +15,7 @@ def is_prime_optimized(number):
     while i < mid:
         if number % i == 0:
             return False
-        """Skip all multiples of 2 and 3 as they were handled before"""
+        """Skip multiples of 2 and 3 as they were handled before"""
         i += 2 if flag else 4
         flag = not flag
     return True
@@ -31,6 +31,7 @@ def get_primes():
     while True:
         if is_prime_optimized(i):
             yield i
+        """Skip multiples of 2 and 3"""
         i += 2 if flag else 4
         flag = not flag
 
