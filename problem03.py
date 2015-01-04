@@ -25,11 +25,13 @@ def is_prime(number):
     return True
 
 
-i = math.floor(math.sqrt(n))
+i = math.ceil(math.sqrt(n))
+"""Make sure i is odd"""
+i -= 0 if i % 2 else 1
 while True:
     if n % i == 0 and is_prime(i):
         result = i
         break
-    i -= 1
+    i -= 2  # keep i odd - no use trying even numbers
 
 print "The largest prime factor of %d is %d" % (n, result)
